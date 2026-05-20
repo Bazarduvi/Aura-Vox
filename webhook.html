@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AURAVOX — Manus Webhook Receiver</title>
+<style>
+  body{margin:0;background:#030308;color:#00ff88;font-family:monospace;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    min-height:100vh;gap:16px;text-align:center;padding:20px;}
+  h1{font-size:1.1rem;letter-spacing:.2em;color:#00ff88;}
+  p{font-size:.85rem;color:#6680aa;max-width:480px;line-height:1.7;}
+  .status{padding:12px 24px;border:1px solid #00ff88;border-radius:8px;
+    background:rgba(0,255,136,.08);font-size:.9rem;}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;
+    background:#00ff88;margin-right:8px;animation:pulse 1.5s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+</style>
+</head>
+<body>
+<h1>⚡ AURAVOX STUDIO</h1>
+<div class="status"><span class="dot"></span>Webhook Receiver — Activo</div>
+<p>Este endpoint recibe notificaciones de <strong>Manus AI</strong> en tiempo real.<br>
+Las peticiones POST son interceptadas por el Service Worker y retransmitidas a la app.</p>
+<p id="last-event" style="color:#00d4ff;display:none"></p>
+<script>
+// Register SW if not already registered
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js', { scope: './' })
+    .then(reg => {
+      console.log('[Webhook] SW registered:', reg.scope);
+      // Respond to messages from SW (webhook events forwarded)
+      navigator.serviceWorker.addEventListener('message', e => {
+        if (e.data?.type === 'MANUS_WEBHOOK') {
+          const p = e.data.payload;
+          const el = document.getElementById('last-event');
+          el.style.display = 'block';
+          el.textContent = '📨 Último evento: ' + (p.event_type || 'unknown') +
+            ' — ' + new Date().toLocaleTimeString();
+          // Forward to parent if opened by the app
+          if (window.opener) window.opener.postMessage({ type: 'MANUS_WEBHOOK', payload: p }, '*');
+        }
+      });
+    });
+}
+
+// Handle direct GET requests from Manus test (fallback)
+// Manus test sends POST — SW handles it and returns 200
+// If somehow GET, show status page (already rendered above)
+
+// Also handle query param events (some webhooks use GET+params)
+const params = new URLSearchParams(window.location.search);
+const eventType = params.get('event_type');
+if (eventType) {
+  const payload = {
+    event_type: eventType,
+    task_detail: {
+      task_id:    params.get('task_id'),
+      task_title: params.get('task_title'),
+      message:    params.get('message'),
+      stop_reason:params.get('stop_reason')
+    }
+  };
+  // Notify the main app
+  if (window.opener) window.opener.postMessage({ type: 'MANUS_WEBHOOK', payload }, '*');
+  localStorage.setItem('auravox_manus_webhook_' + Date.now(), JSON.stringify(payload));
+  document.getElementById('last-event').style.display = 'block';
+  document.getElementById('last-event').textContent =
+    '✅ Evento recibido vía GET: ' + eventType;
+}
+</script>
+</body>
+</html>
