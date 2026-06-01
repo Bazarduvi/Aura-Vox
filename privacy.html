@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Política de Privacidad de AURAVOX STUDIO — Protección de datos, uso de APIs y derechos del usuario.">
+<title>Política de Privacidad — AURAVOX STUDIO</title>
+<style>
+  :root{--bg:#030308;--bg2:#08081a;--text:#c8d0e0;--primary:#00ff88;--secondary:#00d4ff;--muted:#4a5568;--border:rgba(255,255,255,.09);--r:10px;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.75;min-height:100vh;}
+  header{background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10;backdrop-filter:blur(8px);}
+  header .logo{font-size:1.1rem;font-weight:800;color:var(--primary);letter-spacing:.08em;}
+  header .tag{font-size:.72rem;background:rgba(0,212,255,.15);color:var(--secondary);border:1px solid rgba(0,212,255,.3);border-radius:4px;padding:2px 8px;}
+  header a{margin-left:auto;color:var(--secondary);font-size:.82rem;text-decoration:none;}
+  .container{max-width:760px;margin:0 auto;padding:40px 24px 80px;}
+  h1{font-size:1.6rem;color:var(--primary);margin-bottom:6px;}
+  .meta{font-size:.78rem;color:var(--muted);margin-bottom:40px;}
+  h2{font-size:1rem;color:var(--secondary);margin:32px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+  h3{font-size:.9rem;color:var(--text);margin:18px 0 6px;font-weight:600;}
+  p{margin-bottom:12px;font-size:.88rem;}
+  ul{padding-left:20px;margin-bottom:12px;}
+  li{font-size:.88rem;margin-bottom:5px;}
+  .highlight{background:rgba(0,255,136,.07);border-left:3px solid var(--primary);padding:12px 16px;border-radius:0 var(--r) var(--r) 0;margin:16px 0;font-size:.85rem;}
+  .warn-box{background:rgba(255,187,0,.07);border-left:3px solid #ffbb00;padding:12px 16px;border-radius:0 var(--r) var(--r) 0;margin:16px 0;font-size:.85rem;}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.82rem;}
+  th,td{padding:10px 14px;border:1px solid var(--border);text-align:left;}
+  th{background:rgba(0,255,136,.06);color:var(--primary);}
+  a{color:var(--secondary);}
+  footer{text-align:center;padding:32px 24px;color:var(--muted);font-size:.78rem;border-top:1px solid var(--border);}
+  @media(max-width:600px){.container{padding:24px 16px 60px;}}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="logo">AURAVOX</span>
+  <span class="tag">STUDIO</span>
+  <a href="index.html">← Volver a la app</a>
+</header>
+
+<div class="container">
+  <h1>Política de Privacidad</h1>
+  <p class="meta">Última actualización: 1 de junio de 2026 · Versión 1.0 · Aplicable a AURAVOX STUDIO PWA y app de Google Play Store</p>
+
+  <div class="highlight">
+    <strong>Resumen ejecutivo:</strong> AURAVOX STUDIO es una aplicación local que procesa tus datos directamente en tu dispositivo. No recopilamos, almacenamos ni vendemos ningún dato personal en servidores propios. Las únicas transmisiones de datos son las que tú realizas directamente con los proveedores de IA al usar tus propias claves API.
+  </div>
+
+  <h2>1. Identificación del Responsable</h2>
+  <p><strong>Nombre:</strong> Jaime Andrés Dueñas Vicuña<br>
+  <strong>Producto:</strong> AURAVOX STUDIO<br>
+  <strong>URL:</strong> <a href="https://bazarduvi.github.io/Aura-Vox/" target="_blank">https://bazarduvi.github.io/Aura-Vox/</a><br>
+  <strong>Contacto:</strong> A través de <a href="https://github.com/Bazarduvi" target="_blank">GitHub</a></p>
+
+  <h2>2. Datos que la Aplicación Maneja</h2>
+
+  <h3>2.1 Datos almacenados LOCALMENTE en tu dispositivo</h3>
+  <p>Los siguientes datos se guardan exclusivamente en tu dispositivo mediante <strong>IndexedDB</strong> y <strong>localStorage</strong>. AURAVOX no tiene acceso a ellos:</p>
+  <table>
+    <tr><th>Dato</th><th>Propósito</th><th>Dónde se guarda</th></tr>
+    <tr><td>Claves API de terceros</td><td>Autenticación con servicios IA</td><td>IndexedDB local</td></tr>
+    <tr><td>Configuración de la app</td><td>Preferencias de idioma, tema, modelos</td><td>IndexedDB local</td></tr>
+    <tr><td>Guiones y notas generadas</td><td>Autoguardado del trabajo del usuario</td><td>IndexedDB local</td></tr>
+    <tr><td>Historial de chat</td><td>Contexto de conversación en sesión</td><td>Memoria RAM (no persiste)</td></tr>
+    <tr><td>Estadísticas de uso</td><td>Contadores de tokens y generaciones</td><td>IndexedDB local</td></tr>
+    <tr><td>Llave de activación Premium</td><td>Verificación del plan</td><td>IndexedDB local</td></tr>
+    <tr><td>Contadores de uso diario</td><td>Límites del plan gratuito</td><td>localStorage local</td></tr>
+  </table>
+
+  <h3>2.2 Datos transmitidos a TERCEROS por acción del usuario</h3>
+  <div class="warn-box">
+    Cuando envías un mensaje o generas contenido, tu consulta se transmite directamente al proveedor de IA cuya API tienes configurada. AURAVOX actúa únicamente como interfaz — la petición va de tu dispositivo al servidor del proveedor directamente.
+  </div>
+  <table>
+    <tr><th>Proveedor</th><th>Datos transmitidos</th><th>Política de privacidad</th></tr>
+    <tr><td>Google Gemini</td><td>Texto de tus consultas</td><td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com</a></td></tr>
+    <tr><td>Groq AI</td><td>Texto de tus consultas</td><td><a href="https://groq.com/privacy" target="_blank">groq.com/privacy</a></td></tr>
+    <tr><td>Anthropic (Claude)</td><td>Texto de tus consultas</td><td><a href="https://www.anthropic.com/privacy" target="_blank">anthropic.com/privacy</a></td></tr>
+    <tr><td>OpenAI</td><td>Texto de tus consultas</td><td><a href="https://openai.com/policies/privacy-policy" target="_blank">openai.com/policies</a></td></tr>
+    <tr><td>xAI (Grok)</td><td>Texto de tus consultas</td><td><a href="https://x.ai/legal/privacy-policy" target="_blank">x.ai/legal</a></td></tr>
+    <tr><td>DeepSeek</td><td>Texto de tus consultas</td><td><a href="https://www.deepseek.com/privacy" target="_blank">deepseek.com/privacy</a></td></tr>
+    <tr><td>OpenRouter</td><td>Texto de tus consultas</td><td><a href="https://openrouter.ai/privacy" target="_blank">openrouter.ai/privacy</a></td></tr>
+    <tr><td>Perplexity</td><td>Texto de tus consultas</td><td><a href="https://www.perplexity.ai/hub/privacy" target="_blank">perplexity.ai/hub/privacy</a></td></tr>
+    <tr><td>Manus AI</td><td>Texto de tus consultas y tareas</td><td><a href="https://manus.im/privacy" target="_blank">manus.im/privacy</a></td></tr>
+  </table>
+
+  <h2>3. Lo que NO Hacemos</h2>
+  <ul>
+    <li>❌ No tenemos servidores propios que almacenen tus datos</li>
+    <li>❌ No recopilamos datos de uso, telemetría ni analytics</li>
+    <li>❌ No mostramos anuncios ni compartimos datos con anunciantes</li>
+    <li>❌ No vendemos ni cedemos ningún dato a terceros</li>
+    <li>❌ No tenemos acceso a tus claves API (están cifradas en tu dispositivo)</li>
+    <li>❌ No enviamos notificaciones push sin tu permiso explícito</li>
+    <li>❌ No rastreamos tu ubicación</li>
+    <li>❌ No accedemos a tu cámara, micrófono ni galería sin acción explícita</li>
+  </ul>
+
+  <h2>4. Permisos de la Aplicación</h2>
+  <table>
+    <tr><th>Permiso</th><th>Motivo</th><th>Obligatorio</th></tr>
+    <tr><td>Internet</td><td>Conectar con las APIs de IA configuradas</td><td>Sí</td></tr>
+    <tr><td>Notificaciones</td><td>Avisar cuando Manus AI completa una tarea en 2º plano</td><td>No (opcional)</td></tr>
+    <tr><td>Almacenamiento</td><td>Guardar configuración y guiones en IndexedDB local</td><td>Sí</td></tr>
+    <tr><td>Vibración</td><td>Feedback táctil al generar contenido</td><td>No</td></tr>
+  </table>
+
+  <h2>5. Seguridad de las Claves API</h2>
+  <div class="highlight">
+    Tus claves API se almacenan en IndexedDB en tu dispositivo. No se cifran con contraseña por defecto (la seguridad depende del aislamiento de origen del navegador y del propio SO). <strong>No compartas tu dispositivo con personas no autorizadas.</strong> Si desinstalas la app o limpias los datos del navegador, las claves se eliminan permanentemente.
+  </div>
+
+  <h2>6. Plan Premium y Pagos</h2>
+  <p>El Plan Premium se activa mediante una llave JSON local. <strong>No procesamos pagos directamente.</strong> Si en el futuro se implementa facturación a través de Google Play Store, Google gestiona el pago según sus propias políticas. AURAVOX no recibe ni almacena datos de tarjetas de crédito.</p>
+
+  <h2>7. Menores de Edad</h2>
+  <p>AURAVOX STUDIO no está dirigida a menores de 13 años. No recopilamos conscientemente datos de menores. Si eres padre/tutor y crees que un menor ha usado la app, la desinstalación elimina todos los datos locales.</p>
+
+  <h2>8. Service Worker y Caché Offline</h2>
+  <p>La app instala un Service Worker que cachea los archivos estáticos (HTML, CSS, JS, iconos) para funcionar sin conexión. Este caché es local y no transmite datos. Puedes limpiarlo desde Ajustes → Guardar → Importar/Exportar o desde los ajustes del navegador.</p>
+
+  <h2>9. Tus Derechos (RGPD / LOPD)</h2>
+  <p>Como todos los datos se almacenan localmente en tu dispositivo, ejerces tus derechos directamente:</p>
+  <ul>
+    <li><strong>Acceso:</strong> Abre la app → Ajustes → Exportar Config para ver todos tus datos</li>
+    <li><strong>Rectificación:</strong> Edita directamente en Ajustes</li>
+    <li><strong>Eliminación:</strong> Desinstala la app o limpia los datos desde el SO</li>
+    <li><strong>Portabilidad:</strong> Usa "Exportar Config" para obtener un JSON con todos tus ajustes</li>
+  </ul>
+
+  <h2>10. Cambios en esta Política</h2>
+  <p>Cualquier cambio significativo se reflejará en la fecha de actualización al inicio de este documento y se notificará en las notas de la versión de la app. El uso continuado de la app tras los cambios implica aceptación.</p>
+
+  <h2>11. Contacto</h2>
+  <p>Para cualquier consulta sobre privacidad contacta a través de <a href="https://github.com/Bazarduvi" target="_blank">github.com/Bazarduvi</a>.</p>
+
+</div>
+
+<footer>
+  © 2026 AURAVOX STUDIO · Creado por Jaime Andrés Dueñas Vicuña ·
+  <a href="index.html">Volver a la app</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+{
+  "name": "AURAVOX STUDIO",
+  "short_name": "AURAVOX",
+  "description": "Estudio IA todo-en-uno para creadores de contenido YouTube. Genera guiones, miniaturas, audio TTS, melodías y más con las mejores IAs del mundo.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#030308",
+  "theme_color": "#030308",
+  "lang": "es",
+  "categories": [
+    "productivity",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Chat Agente",
+      "short_name": "Chat",
+      "url": "./index.html#chat",
+      "description": "Abrir chat IA directamente"
+    },
+    {
+      "name": "Guiones YouTube",
+      "short_name": "Guiones",
+      "url": "./index.html#scripts",
+      "description": "Generar guiones para YouTube"
+    },
+    {
+      "name": "Política de Privacidad",
+      "short_name": "Privacidad",
+      "url": "./privacy.html",
+      "description": "Política de privacidad de AURAVOX STUDIO"
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": []
+}
